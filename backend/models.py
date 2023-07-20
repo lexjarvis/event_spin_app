@@ -2,10 +2,10 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# Define your models here...
-
 
 class Event(db.Model):
+    __tablename__ = 'event'
+    __table_args__ = {'schema': 'eventspin_schema'}
     id = db.Column(db.String(50), primary_key=True)
     name = db.Column(db.String(200))
     description = db.Column(db.Text)
@@ -16,6 +16,8 @@ class Event(db.Model):
     ticket_availabilities = db.relationship('TicketAvailability', backref='event', lazy=True)
 
 class Venue(db.Model):
+    __tablename__ = 'venue'
+    __table_args__ = {'schema': 'eventspin_schema'}
     id = db.Column(db.String(50), primary_key=True)
     name = db.Column(db.String(200))
     address = db.Column(db.String(200))
@@ -24,12 +26,16 @@ class Venue(db.Model):
     country = db.Column(db.String(100))
 
 class Organizer(db.Model):
+    __tablename__ = 'organizer'
+    __table_args__ = {'schema': 'eventspin_schema'}
     id = db.Column(db.String(50), primary_key=True)
     name = db.Column(db.String(200))
     description = db.Column(db.Text)
     website = db.Column(db.String(200))
 
 class TicketAvailability(db.Model):
+    __tablename__ = 'ticket_availability'
+    __table_args__ = {'schema': 'eventspin_schema'}
     id = db.Column(db.Integer, primary_key=True)
     event_id = db.Column(db.String(50), db.ForeignKey('event.id'))
     ticket_type = db.Column(db.String(100))
@@ -46,3 +52,6 @@ def show_tables():
 if __name__ == '__main__':
     # Call the function to show the tables when the script is run directly
     show_tables()
+
+
+

@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Spin App</title>
+    <title>Spin Wheel API Test</title>
 </head>
 <body>
-  <div id="root"></div>
+    <h1>Spin Wheel API Test</h1>
+    <button id="spinButton">Spin the Wheel</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("spinButton").addEventListener("click", () => {
+            // User preferences (example data, replace with actual user input)
+            const preferences = {
+                zip_code: "94105",
+                search_radius: 10,
+                event_date: "2023-12-31",
+                in_morning: true,
+                in_afternoon: false,
+                in_evening: true,
+                is_free: true,
+                is_age_restricted: false,
+            };
+
+            fetch("/spin", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(preferences),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the result on the page
+                document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
 </body>
 </html>
 
-  <!-- <h1>Event Spin App</h1>
-  
-  <div>
-    <label for="zipCode">Zip Code:</label>
-    <input type="text" id="zipCode" />
-  </div>
-
-Add more input fields for search radius, date, time preference, etc. -->
-
-  <!-- <button onclick="spinWheel()">Spin</button>
-
-  <div id="eventDetails">
-    <h2 id="eventName"></h2>
-    <p id="eventSummary"></p>
-    <img id="eventImage" src="" alt="Event Image">
-    <p id="organizerName"></p>
-    <p id="eventDate"></p>
-    <p id="eventTime"></p>
-    <p id="eventLocation"></p>
-    <p id="eventPrice"></p>
-    <p id="ageRestricted"></p>
-  </div>
-
-  <script src="app.js"></script>
-</body>
-</html>

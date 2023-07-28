@@ -19,13 +19,6 @@ class EventData(db.Model):
     event_end_time = db.Column(db.DateTime, nullable=False)
     event_cost = db.Column(db.Float, nullable=False)
     event_age_restriction = db.Column(db.String(50), nullable=True)
-    zip_code = db.Column(db.String(10), nullable=False)
-    in_morning = db.Column(db.Boolean, nullable=False)
-    in_afternoon = db.Column(db.Boolean, nullable=False)
-    in_evening = db.Column(db.Boolean, nullable=False)
-    is_free = db.Column(db.Boolean, nullable=False)
-    is_age_restricted = db.Column(db.Boolean, nullable=False)
-
 
     def __init__(self, event_id, event_image, event_title, event_summary, event_location, event_date,
                  event_start_time, event_end_time, event_cost, event_age_restriction):
@@ -39,13 +32,6 @@ class EventData(db.Model):
         self.event_end_time = event_end_time
         self.event_cost = event_cost
         self.event_age_restriction = event_age_restriction
-    
-    # Define a foreign key to connect the UserPreferences table
-    user_preferences_id = db.Column(db.Integer, db.ForeignKey('user_preferences.id'))
-
-    # Create a bidirectional one-to-many relationship between UserPreferences and EventData
-    user_preferences = db.relationship('UserPreferences', back_populates='events')
-
 
 class UserPreferences(db.Model):
     __tablename__ = 'user_preferences'
@@ -68,9 +54,4 @@ class UserPreferences(db.Model):
         self.in_evening = in_evening
         self.is_free = is_free
         self.is_age_restricted = is_age_restricted
-
-    # Create a one-to-many relationship between UserPreferences and EventData
-    events = db.relationship('EventData', back_populates='user_preferences')
-
-
 

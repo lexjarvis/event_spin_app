@@ -1,39 +1,75 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import './style.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
+const HomePage = () => {
+  const [zipCode, setZipCode] = useState('');
+  const [searchRadius, setSearchRadius] = useState('');
+  const [eventDate, setEventDate] = useState('');
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import HomePage from './HomePage';
-import SpinPage from './SpinPage';
-import EventPage from './EventPage';
-import reportWebVitals from './reportWebVitals';
-import './style.css';
+  const handleSearch = async () => {
+    try {
+      // Construct the API request parameters
+      const apiParams = {
+        engine: 'google_events',
+        q: 'Events in ' + zipCode,
+        hl: 'en',
+        gl: 'us',
+        api_key: 'YOUR_SERP_API_KEY', // Replace with your actual SERP API key
+      };
+  
+      // Make the API request to the backend
+      const response = await axios.get('/api/events', { params: apiParams });
+  
+      // Extract the event data from the response
+      const eventData = response.data;
+  
+      // Navigate to the second page with the fetched event data
+      // For example, you can use React Router to navigate to the second page:
+      // history.push('/second-page', { eventData });
+    } catch (error) {
+      console.error('Error fetching event data:', error);
+    }
+  };  
 
-ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/second-page" component={SecondPage} />
-      <Route exact path="/event-details" component={EventDetailsPage} />
-    </Switch>
-  </Router>,
-  document.getElementById('root')
-);
+  return (
+    <div>
+      {/* Logo and Header */}
+      <div>
+        <img src="path_to_logo.png" alt="Logo" />
+        <h1>Header Title</h1>
+      </div>
 
+      {/* Search Form */}
+      <div>
+        {/* Zip Code */}
+        <input
+          type="text"
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
+          placeholder="Enter Zip Code"
+        />
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        {/* Search Radius */}
+        <input
+          type="text"
+          value={searchRadius}
+          onChange={(e) => setSearchRadius(e.target.value)}
+          placeholder="Enter Search Radius"
+        />
+
+        {/* Date Picker */}
+        <input
+          type="date"
+          value={eventDate}
+          onChange={(e) => setEventDate(e.target.value)}
+        />
+
+        {/* Search Button */}
+        <button onClick={handleSearch}>Search</button>
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
+

@@ -1,0 +1,21 @@
+/* Spinner.css */
+.spinner {
+    text-align: center;
+  }
+  
+  .spinner .spinner-wheel {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .spinner button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

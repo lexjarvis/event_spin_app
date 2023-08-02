@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Spinner from './Spinner';
 import EventPopup from './EventPopup';
 import axios from 'axios';
+import './Homepage.css'; // Import the CSS file
 
 const Homepage = () => {
   const [location, setLocation] = useState('');

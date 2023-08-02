@@ -1,0 +1,100 @@
+/* Homepage.css */
+.homepage {
+  text-align: center;
+  padding: 20px;
+}
+
+.homepage header {
+  margin-bottom: 20px;
+}
+
+.homepage h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.homepage .body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.homepage input[type="text"] {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.homepage button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Add a loading spinner style */
+.spinner {
+  margin-top: 20px;
+}
+
+.spinner .spinner-wheel {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Add style for event popup */
+.event-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.event-popup .event-details {
+  text-align: center;
+}
+
+.event-popup img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.event-popup h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.event-popup p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.event-popup a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 20px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+
+  

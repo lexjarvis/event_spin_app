@@ -1,30 +1,3 @@
-from flask import Flask, jsonify, render_template, request, send_from_directory
-from models import db, connect_db, EventData, UserPreferences
-from flask_migrate import Migrate
-from serpapi import GoogleSearch
-import random
-import requests
-
-app = Flask(__name__, static_folder='../frontend/build/static', template_folder='../frontend/build')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://alexajarvis:ppboy@localhost:5432/event_spin_app'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
-
-migrate = Migrate(app, db)
-
-def get_events_from_serpapi(api_key, query):
-    # SERP API endpoint to search for events
-    serpapi_url = 'https://serpapi.com/search.json'
-
-    # Parameters for the API request
-    params = {
-        "engine": "google_events",
-        "q": query,
-        "hl": "en",
-        "gl": "us",
-        "api_key": api_key
-    }
-
     # try:
     #     # response = requests.get(serpapi_url, params=params)
 
@@ -43,9 +16,10 @@ def get_events_from_serpapi(api_key, query):
 
     # except requests.exceptions.RequestException as e:
     #     print(f"Error: {e}")
-    #     return []
+    #     return []   
 
-    data =  {
+
+data =  {
   "search_metadata": {
     "id": "64c154a1f716eebacf31e15a",
     "status": "Success",
@@ -571,55 +545,4 @@ def get_events_from_serpapi(api_key, query):
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM0-KzLZkjBXjmR3IN_w7z9pNh_rDQd_xtZ5fU_fPF9Q&s=10"
     }
   ]
-}
-    events = data.get('events_results', [])
-    return events
-
-
-# Define a route for the root URL
-@app.route('/')
-def event_search():
-    query = "Events in Tampa"
-    return render_template("homepage.html")
-
-# API endpoint to handle user spin request
-@app.route('/spin', methods=['GET', 'POST'])
-def spin_wheel():
-    if request.method == 'POST':
-        data = request.get_json()
-
-        # Fetch events from the SERP API
-        serpapi_api_key = 'a46158d9b188f127a070584d2f0270708896f410452a3f71d1335575422444f6'  
-        query = "Events in Tampa"
-        events_from_serpapi = get_events_from_serpapi(serpapi_api_key, query)
-
-        if not events_from_serpapi:
-            # If no events from SERP API, return an error response
-            return jsonify({'message': 'No events found from SERP API.'}), 404
-
-        # Randomly select one event from the fetched events list
-        selected_event = random.choice(events_from_serpapi)
-
-        # Return the selected event's data as a response to the frontend
-        event_data = {
-            'event_title': selected_event['title'],
-            # 'event_description': selected_event['description'],
-            # 'event_location': selected_event['location'],
-            'event_date': selected_event['date'],
-            # 'event_time': selected_event['time'],
-            'event_link': selected_event['link']
-        }
-
-        return jsonify(event_data)
-
-@app.route('/')
-def serve_react_app():
-    return render_template('index.html')
-
-@app.route('/static/<path:path>')
-def serve_static(path):
-    return send_from_directory(app.static_folder, path)
-
-
-if __name__ == '__main__':
-    app.run(port=8008, debug=True)
+  }

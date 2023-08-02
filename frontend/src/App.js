@@ -1,20 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomePage from './HomePage';
-import EventListPage from './EventListPage';
+// import React from 'react';
+// import EventSpin from './Homepage';
 
-const App = () => {
+// function App() {
+//   return (
+//     <div className="App">
+//       <EventSpin />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React from 'react';
+import './App.css';
+import Homepage from './Homepage';
+
+function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/event-list" component={EventListPage} />
-      </Switch>
-    </Router>
+    <div className="App">
+      <Homepage />
+    </div>
   );
-};
+}
 
 export default App;
+
 
 
 

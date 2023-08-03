@@ -10,7 +10,7 @@ The goal of this project is to create a creative app concept that could be appli
 Local event data will come from the Google Events API, with the app requesting to retrieve event information based on the user’s locations. This API provides a comprehensive database of events which will enable the app to provide a wide selection of local activities for the user to choose from. 
 
 
-#Database Schema
+# Database Schema
 EventData Table:
  Table Name: event_data
  Columns:
@@ -30,7 +30,8 @@ UserPreferences Table:
 
 Database Management
 API: https://serpapi.com/google-events-api
-	JSON output includes structured data for events results and more.
+JSON output includes structured data for events results and more.
+
 Types of data that will be used for the app:
 The Google Events Results API allows a user to scrape events results from a Google Events page. SerpApi is able to make sense of this information and extract: Thumbnail, Title, Address, Date, Link
 
@@ -51,10 +52,7 @@ Columns:
 id: Integer (Primary Key) 
 location: String(100) (Not nullable)
 
-
-
 Table Relationships
-
 EventData Table:
 This table stores information about various events.
 It has a primary key "id" that uniquely identifies each event.
@@ -73,7 +71,7 @@ There is an implicit relationship between these two tables based on the "locatio
 
 
 
-Design Brief
+# Design Brief
 
 Project Scope & Overview
 Event Spin is a fun and interactive web application that allows users to discover and explore local events happening in their area. The app aims to provide an engaging user experience by incorporating a spinning wheel game that randomly selects an event for the user to attend. The primary objective of the app is to promote local events, increase user engagement, and encourage participation in community activities.
@@ -108,11 +106,11 @@ Event Card (Popup): The event popup will appear with a dark background (#333) an
 Event Popup: After the user clicks the “Spin” button, the spinning wheel animation should last for approximately three seconds before settling on a randomly selected event. Upon completion of the spin, a sleek event popup should appear with the event details, including the event title, date, time, location, and an image. Users have the option to access the event's website for more information or close out of the popup to respin for a new event. 
 
 
-User Flow and Interaction:
+# User Flow & Interactions
 Ensure that the user flow is straightforward and intuitive. Users should easily understand the purpose of the app, how to input their location, and initiate the spinning wheel game. The spinning animation should be smooth and visually captivating, enticing users to interact with the app repeatedly.
 
 
-Conclusion:
+# Conclusion
 The Event Spin app's design will captivate users with its modern and playful interface while offering a clean and intuitive experience. The spinning wheel and event popup will be the central elements that provide an interactive way for users to discover and explore events in their preferred location. With its visually appealing design and user-friendly features, the Event Spin app will attract a wide audience of event enthusiasts.
 
 

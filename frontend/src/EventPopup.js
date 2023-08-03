@@ -1,6 +1,11 @@
 import React from 'react';
 
 const EventPopup = ({ eventData, onClose }) => {
+  // Check if eventData is defined and has the required properties
+  if (!eventData || !eventData.event_date || !eventData.event_date.when) {
+    return null; // Return null if eventData is not defined or doesn't have required properties
+  }
+
   return (
     <div className="event-popup">
       {/* Popup content */}
@@ -19,3 +24,5 @@ const EventPopup = ({ eventData, onClose }) => {
 };
 
 export default EventPopup;
+
+

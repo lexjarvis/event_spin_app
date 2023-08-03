@@ -1,9 +1,9 @@
-
+/* Spinner.css */
 .spinner {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 30px;
     position: relative;
     z-index: 0;
   }
@@ -12,76 +12,36 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: #f0f0f0;
+    background: radial-gradient(circle, #61134c 0%, #ba4949 100%);
     position: relative;
     cursor: pointer;
     transition: transform 3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
-/*   
-  .triangle {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 173.2px solid #ff6464;
-    transform-origin: 50% 80px;
-  }
-  
-  .triangle:nth-child(1) {
-    transform: rotate(45deg);
-  }
-  
-  .triangle:nth-child(2) {
-    transform: rotate(90deg);
-  }
-  
-  .triangle:nth-child(3) {
-    transform: rotate(135deg);
-  }
-  
-  .triangle:nth-child(4) {
-    transform: rotate(180deg);
-  }
-  
-  .triangle:nth-child(5) {
-    transform: rotate(225deg);
-  }
-  
-  .triangle:nth-child(6) {
-    transform: rotate(270deg);
-  }
-  
-  .triangle:nth-child(7) {
-    transform: rotate(315deg);
-  }
-  
-  .triangle:nth-child(8) {
-    transform: rotate(0deg);
-  } */
   
   .spinning {
-    animation: spinWheel 3s ease-in-out;
+    animation: spinWheel 3s ease-in-out, changeColors 3s linear infinite;
   }
-
+  
   .spin-button {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    background-color: black;
+    width: 180px;
+    height: 180px;
+    line-height: 180px;
+    background: radial-gradient(circle, #961e76 0%, #ff6464 100%);
     color: white;
     text-align: center;
+    letter-spacing: 10px;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 40px;
     cursor: pointer;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Added text-shadow for depth */
   }
-
-  
   
   @keyframes spinWheel {
     0% {
@@ -91,6 +51,22 @@
       transform: rotate(360deg);
     }
   }
+  
+  @keyframes changeColors {
+    0% {
+      background: radial-gradient(circle, #961e76 0%, #ff6464 100%);
+    }
+    50% {
+      background: radial-gradient(circle, #e62096 0%, #ff6464 100%);
+    }
+    100% {
+      background: radial-gradient(circle, #961e76 0%, #ff6464 100%);
+    }
+  }
+  
+  
+  
+  
   
   
   
